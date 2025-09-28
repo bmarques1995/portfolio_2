@@ -1,0 +1,15 @@
+"use client";
+
+export default function Header() {
+    return (
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/portfolio">Portfolio</a></li>
+                    <li><a href="/posts">Posts</a></li>
+                </ul>
+            </nav>
+        </header>
+    );
+}

@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <div>
-      Root Page
+      Portfolio Page
     </div>
   );
 }

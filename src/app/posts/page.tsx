@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <div>
-      Root Page
+      Posts Page
     </div>
   );
 }
