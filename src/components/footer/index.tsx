@@ -2,7 +2,7 @@
 
 export default function Header() {
     return (
-        <header>
+        <footer>
             <nav>
                 <ul>
                     <li><a href="https://www.linkedin.com/in/bruno-silva-marques/" target="blank">Linkedin</a></li>
@@ -11,6 +11,6 @@ export default function Header() {
             </nav>
             {//Twemoji Emojis
             }
-        </header>
+        </footer>
     );
 }

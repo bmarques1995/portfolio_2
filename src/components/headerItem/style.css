@@ -1,0 +1,15 @@
+a > span {
+    color: #05df72;
+}
+
+a {
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+.selected {
+    background-color: #262626;
+}
