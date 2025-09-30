@@ -3,6 +3,7 @@
   --close-label: #ff5f56;
   --minimize-label:#ffbd2e;
   --maximize-label:#27c93f;
+  --path-display-color: #0051ff;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-default: Arial, Helvetica, sans-serif;
 }

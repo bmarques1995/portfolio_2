@@ -70,11 +70,15 @@
 .username {
     font-family: var(--font-mono);
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
-.username span {
+.username .blog-owner {
     color: var(--access-color);
+}
+
+.username .blog-path{
+    color: #0051ff;
 }
 
 .icon-bars .close-cross {

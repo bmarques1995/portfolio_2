@@ -5,12 +5,15 @@ import Bars from "@/../../public/bars.svg";
 import CloseCross from "@/../../public/close-cross.svg"
 import { useState, useEffect } from "react";
 import NavList from "../navList";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import filterPathname from "@/shared/filterPathname";
 
 export default function Header() {
     const [activeBar, setActiveBar] = useState<boolean>(false);
     const [size, setSize] = useState<{width: number, height: number}>({ width: 0, height: 0 });
     const router = useRouter();
+    const pathname = usePathname();
+    const filteredPathname = filterPathname(pathname);
 
     useEffect(() => {
         setSize({ width: window.innerWidth, height: window.innerHeight });
@@ -24,7 +27,7 @@ export default function Header() {
         <header className="blog-header">
             <div className="title-wrapper">
                 <WindowLabels/>
-                <section className="terminal center"><a onClick={() => router.replace("/")} className="username"><span>$</span> bmarques</a></section>
+                <section className="terminal center"><a onClick={() => router.replace("/")} className="username"><span className="blog-owner">bmarques</span>$<span className="blog-path">~{filteredPathname === "" ? "" : "/"}{filteredPathname}</span></a></section>
             </div>
             {size.width > 768 &&
             <nav className="nav-links">
