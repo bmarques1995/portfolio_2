@@ -11,11 +11,11 @@
 }
 
 .close {
-    background-color: #ff5f56;
+    background-color: var(--close-label);
 }
 .minimize {
-    background-color: #ffbd2e;
+    background-color: var(--minimize-label);
 }
 .maximize {
-    background-color: #27c93f;
+    background-color: var(--maximize-label);
 }

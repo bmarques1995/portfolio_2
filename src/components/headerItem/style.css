@@ -1,5 +1,5 @@
 a > span {
-    color: #05df72;
+    color: var(--access-color);
 }
 
 a {
@@ -11,5 +11,5 @@ a {
 }
 
 .selected {
-    background-color: #262626;
+    background-color: var(--selected-background);
 }

@@ -2,15 +2,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #262626;
+    border-bottom: 1px solid var(--selected-background);
     height: 68px;
     padding-left: 16px;
 }
 
 .terminal {
 
-    background-color: #262626;
-    border: 1px solid #26262680;
+    background-color: var(--selected-background);
     height: 32px;
     border-radius: 6px;
     font-size: 16px;
@@ -43,7 +42,7 @@
 }
 
 .item-container {
-    background-color: #0a0a0a;
+    background-color: var(--background);
     width: 50%;
     min-width: 300px;
     height: 100%;
@@ -75,11 +74,11 @@
 }
 
 .username span {
-    color: #27c93f;
+    color: var(--access-color);
 }
 
 .icon-bars .close-cross {
-    color: #fff;
+    color: var(--foreground);
 }
 
 .close-cross{
