@@ -78,7 +78,7 @@
 }
 
 .username .blog-path{
-    color: #0051ff;
+    color: var(--path-display-color);
 }
 
 .icon-bars .close-cross {

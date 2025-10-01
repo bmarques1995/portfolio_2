@@ -2,7 +2,10 @@
 import WindowLabels from "../windowLabels";
 import "./style.css";
 
-export default function Window({title}: {title: string})
+export default function Window({children, title}: Readonly<{
+  children: React.ReactNode;
+  title: string
+}>)
 {
     return(
         <section className="window-container window-component">
@@ -12,7 +15,7 @@ export default function Window({title}: {title: string})
                 <div className="space-controller"></div>
             </div>
             <div className="content-area window-component">
-
+                {children}
             </div>
         </section>
     );
