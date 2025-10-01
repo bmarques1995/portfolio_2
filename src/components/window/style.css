@@ -1,0 +1,31 @@
+.window-component{
+    width: 100%;
+}
+
+.window-container{
+    margin-top: 8px;
+    background-color: var(--selected-background);
+    border: 1px solid var(--selected-background);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.title-bar{
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.space-controller{
+    width: 60px;
+    background-color: #0000;
+}
+
+.title-bar, .content-area{
+    padding: 8px 16px;
+}
+
+.content-area{
+    min-height: 32px;
+    background-color: var(--background);
+}

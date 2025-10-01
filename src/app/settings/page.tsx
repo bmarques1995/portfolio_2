@@ -1,9 +1,13 @@
 "use client";
 
-export default function Home() {
+import Window from "@/components/window";
+
+export default function Settings() {
   return (
     <div>
-        Settings Page
+        <Window title="Settings">
+
+        </Window>
     </div>
   );
 }
