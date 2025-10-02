@@ -3,7 +3,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import './globals.css';
 import { useEffect } from "react";
-import { ThemeContextProvider } from "@/hooks/languageContainer";
+import { ThemeContextProvider } from "@/hooks/themeContext";
 
 export default function RootLayout({
   children,

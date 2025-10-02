@@ -4,14 +4,13 @@ import Moon from "@/../../public/moon.svg"
 import Monitor from "@/../../public/monitor.svg"
 import './style.css';
 import { Dispatch, SetStateAction, useState } from "react";
-import { useThemeContext, Theme } from "@/hooks/languageContainer";
+import { useThemeContext, Theme } from "@/hooks/themeContext";
 
-function CustomLabel({children, active, title, value, valueSetter}: Readonly<{children: React.ReactNode, active: boolean, title: string, value: Theme, valueSetter: Dispatch<SetStateAction<Theme>>}>)
+function CustomLabel({children, active, title, value, valueSetter}: Readonly<{children: React.ReactNode, active: boolean, title: string, value: Theme, valueSetter: (theme : Theme) => void}>)
 {
-    //Dispatch<SetStateAction<boolean>>
     return (
         <label className="custom-label">
-            <button onClick={() => {valueSetter(value); console.log(title)}}>
+            <button onClick={() => {valueSetter(value)}}>
                 {active &&
                 <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="4" fill="currentColor"></circle></svg>
                 }

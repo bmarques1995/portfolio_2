@@ -13,7 +13,7 @@ export enum Theme {
 
 type ThemeContextType = {
   theme: Theme;
-  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+  setTheme: (theme: Theme) => void;
   themeMap: Map<Theme, string>;
 };
 
@@ -35,20 +35,40 @@ export const ThemeContextProvider = ({ children }: ThemeContextProviderProps) =>
       [Theme.Dark, "dark"],
     ]);
 
+    const themeReverseMap = new Map<string, Theme>([
+      ["system", Theme.System],
+      ["light",Theme.Light],
+      ["dark", Theme.Dark],
+    ]);
+
+    const themeSetter = (theme: Theme) => {
+      localStorage.setItem("theme", themeMap.get(theme)!);
+      console.log(theme);
+      setTheme(theme);
+    };
+
     const themeContextMemo: ThemeContextType = useMemo(
     () => ({
         'theme': theme,
-        'setTheme': setTheme,
+        'setTheme': themeSetter,
         'themeMap': themeMap,
     }),
     [theme, setTheme, themeMap]);
 
+
     useEffect(() => {
+      const savedTheme = localStorage.getItem("theme");
+      const treatedSavedTheme = (savedTheme === null || savedTheme === "") ? "system" : savedTheme;
+      if(savedTheme === null)
+        localStorage.setItem("theme", "system");
+      console.log(treatedSavedTheme);
+      const currentTheme = themeReverseMap.get(treatedSavedTheme)!;
+      setTheme(themeReverseMap.get(treatedSavedTheme)!);
       document.documentElement.classList.remove("light");
       document.documentElement.classList.remove("dark");
-      if(theme !== Theme.System)
-        document.documentElement.classList.add(themeMap.get(theme)!);
-    }, [theme, themeMap]);
+      if(currentTheme !== Theme.System)
+        document.documentElement.classList.add(themeMap.get(currentTheme)!);
+    }, [setTheme, themeMap]);
 
     return (
         <ThemeContext.Provider value={themeContextMemo}>
