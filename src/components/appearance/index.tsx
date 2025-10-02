@@ -12,7 +12,7 @@ export default function Appearance() {
         <div className="appearance-container">
             <p className="appearance-command"><span>$</span> cat appearance</p>
 
-            <p className="appearance-desc">theme mode</p>
+            <p className="appearance-desc">theme settings</p>
 
             <div className="appearance-values">
                 <CustomLabel<Theme> active={theme === Theme.Light} title="Light Mode" value={Theme.Light} valueSetter={setTheme}>

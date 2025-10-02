@@ -1,19 +1,23 @@
 "use client";
+import { TFunction } from "i18next";
 import React, { createContext, useState, useContext, useMemo, useEffect, use } from "react";
+import { useTranslation } from "react-i18next";
+import '@/app/lib/i18n'
 
 type ThemeContextProviderProps = {
   children: React.ReactNode;
 };
 
-export enum Language {
+export enum SystemLanguage {
     EN_US,
     PT_BR
 }
 
 type LanguageContextType = {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  languageMap: Map<Language, string>;
+  systemLanguage: SystemLanguage;
+  setSystemLanguage: (language: SystemLanguage) => void;
+  languageMap: Map<SystemLanguage, string>;
+  translator: TFunction<"translation", undefined>
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -27,38 +31,40 @@ export const useLanguageContext = () => {
 };
 
 export const LanguageContextProvider = ({ children }: ThemeContextProviderProps) => {
-    const [language, setLanguage] = useState(Language.EN_US);
-    const languageMap = new Map<Language, string>([
-      [Language.EN_US, "en-us"],
-      [Language.PT_BR, "pt-br"],
+    const [systemLanguage, setSystemLanguage] = useState(SystemLanguage.EN_US);
+    const languageMap = new Map<SystemLanguage, string>([
+      [SystemLanguage.EN_US, "en_us"],
+      [SystemLanguage.PT_BR, "pt_br"],
     ]);
 
-    const languageReverseMap = new Map<string, Language>([
-      ["en-us", Language.EN_US],
-      ["pt-br", Language.PT_BR],
+    //const {t, i18n : {changeLanguage, language}} = useTranslation();
+    const {t, i18n } = useTranslation();
+
+    const languageReverseMap = new Map<string, SystemLanguage>([
+      ["en_us", SystemLanguage.EN_US],
+      ["pt_br", SystemLanguage.PT_BR],
     ]);
 
-    const languageSetter = (language: Language) => {
+    const languageSetter = (language: SystemLanguage) => {
       localStorage.setItem("language", languageMap.get(language)!);
-      setLanguage(language);
+      setSystemLanguage(language);
+      i18n.changeLanguage(languageMap.get(language)!);
     };
 
     const languageContextMemo: LanguageContextType = useMemo(
     () => ({
-        'language': language,
-        'setLanguage': languageSetter,
+        'systemLanguage': systemLanguage,
+        'setSystemLanguage': languageSetter,
         'languageMap': languageMap,
+        'translator': t
     }),
-    [language, setLanguage, languageMap]);
-
+    [systemLanguage, setSystemLanguage, languageMap, t]);
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem("language");
-        const treatedSavedLanguage = (savedLanguage === null || savedLanguage === "" || savedLanguage === undefined) ? "system" : savedLanguage;
-        if(savedLanguage === null|| savedLanguage === "")
-            localStorage.setItem("language", "en-us");
-        setLanguage(languageReverseMap.get(treatedSavedLanguage)!);
-    }, [setLanguage, languageMap]);
+        const treatedSavedLanguage = (savedLanguage === null || savedLanguage === "" || savedLanguage === undefined) ? "en_us" : savedLanguage;
+        languageSetter(languageReverseMap.get(treatedSavedLanguage)!);
+    }, []);
 
     return (
         <LanguageContext.Provider value={languageContextMemo}>
