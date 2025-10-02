@@ -1,5 +1,22 @@
 {
     "translation":{
-        "header": "chave"
+        "footer": {
+            "contact": "Entrar em contato"
+        },
+        "header": {
+            "portfolio": "projetos",
+            "settings": "configurações"
+        },
+        "language": {
+            "window": "Idioma",
+            "settings": "configurações de idioma"
+        },
+        "appearance": {
+            "window": "Aparência",
+            "title": "configurações de tema",
+            "light": "Modo Claro",
+            "dark": "Modo Escuro",
+            "system": "Opções do Sistema"
+        }
     }
 }

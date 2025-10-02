@@ -1,5 +1,22 @@
 {
     "translation":{
-        "header": "key"
+        "footer": {
+            "contact": "Get in touch"
+        },
+        "header": {
+            "portfolio": "portfolio",
+            "settings": "settings"
+        },
+        "language": {
+            "window": "Language",
+            "settings": "language settings"
+        },
+        "appearance": {
+            "window": "Appearance",
+            "title": "theme settings",
+            "light": "Light Mode",
+            "dark": "Dark Mode",
+            "system": "System Mode"
+        }
     }
 }

@@ -1,8 +1,9 @@
-a > span {
+.header-a > span {
     color: var(--access-color);
 }
 
-a {
+.header-a {
+    text-transform: capitalize;
     border-radius: 6px;
     box-sizing: border-box;
     cursor: pointer;

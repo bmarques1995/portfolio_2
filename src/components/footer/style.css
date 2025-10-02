@@ -1,0 +1,9 @@
+.echo-msg, .presenter-msg > span{
+    color: var(--access-color);
+}
+
+.social-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}

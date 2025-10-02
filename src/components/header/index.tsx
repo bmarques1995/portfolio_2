@@ -29,12 +29,12 @@ export default function Header() {
                 <WindowLabels/>
                 <section className="terminal center"><a onClick={() => router.replace("/")} className="username"><span className="blog-owner">bmarques</span>$<span className="blog-path">~{filteredPathname === "" ? "" : "/"}{filteredPathname}</span></a></section>
             </div>
-            {size.width > 768 &&
+            {size.width > 1024 &&
             <nav className="nav-links">
                 <NavList/>
             </nav>
             }
-            {size.width <= 768 &&
+            {size.width <= 1024 &&
             <nav className="nav-links">
                 <Bars className="icon-bars" onClick={() => setActiveBar(true)} width={32} height={32}/>
                 {

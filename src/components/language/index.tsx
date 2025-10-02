@@ -9,7 +9,7 @@ export default function LanguageSetter() {
         <div className="language-container">
             <p className="language-command"><span>$</span> cat language</p>
 
-            <p className="language-desc">language settings {translator('header')}</p>
+            <p className="language-desc">{translator('language.settings')}</p>
 
             <div className="language-values">
                 <CustomLabel<SystemLanguage> active={systemLanguage === SystemLanguage.EN_US} title="en-us" value={SystemLanguage.EN_US} valueSetter={setSystemLanguage}>

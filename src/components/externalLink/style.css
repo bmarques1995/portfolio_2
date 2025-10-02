@@ -1,0 +1,12 @@
+.external-link{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    column-gap: 8px;
+}
+
+.external-link > span{
+    color: var(--access-color);
+}
