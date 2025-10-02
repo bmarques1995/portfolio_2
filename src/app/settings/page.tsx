@@ -1,5 +1,6 @@
 "use client";
 import Appearance from "@/components/appearance";
+import LanguageSetter from "@/components/language";
 import Window from "@/components/window";
 
 export default function Settings() {
@@ -12,6 +13,9 @@ export default function Settings() {
     <div>
       <Window title="Appearance">
         <Appearance />
+      </Window>
+      <Window title="Settings">
+        <LanguageSetter />
       </Window>
     </div>
   );

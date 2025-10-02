@@ -2,8 +2,8 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import './globals.css';
-import { useEffect } from "react";
 import { ThemeContextProvider } from "@/hooks/themeContext";
+import { LanguageContextProvider } from "@/hooks/languageContext";
 
 export default function RootLayout({
   children,
@@ -14,11 +14,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeContextProvider>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeContextProvider>
+        <LanguageContextProvider>
+          <ThemeContextProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeContextProvider>
+        </LanguageContextProvider>
       </body>
     </html>
   );

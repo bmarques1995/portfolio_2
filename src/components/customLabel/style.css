@@ -1,0 +1,16 @@
+.custom-label{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.custom-label > button{
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: var(--selected-background);
+    color: var(--foreground);
+    outline: none;
+    border: none;
+}

@@ -1,13 +1,13 @@
-.appearance-container{
+.language-container{
     display: flex;
     flex-direction: column;
     row-gap: 8px;
 }
 
-.appearance-command > span, .appearance-desc{
+.language-command > span, .language-desc{
     color: var(--access-color);
 }
 
-.appearance-values{
+.language-values{
     margin-bottom: 8px;
 }

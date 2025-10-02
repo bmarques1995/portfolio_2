@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useState, useContext, useMemo, useEffect, use } from "react";
+import React, { createContext, useState, useContext, useMemo, useEffect } from "react";
 
 type ThemeContextProviderProps = {
   children: React.ReactNode;
@@ -58,10 +58,9 @@ export const ThemeContextProvider = ({ children }: ThemeContextProviderProps) =>
 
     useEffect(() => {
       const savedTheme = localStorage.getItem("theme");
-      const treatedSavedTheme = (savedTheme === null || savedTheme === "") ? "system" : savedTheme;
-      if(savedTheme === null)
+      const treatedSavedTheme = (savedTheme === null || savedTheme === "" || savedTheme === undefined) ? "system" : savedTheme;
+      if(savedTheme === null || savedTheme === "" || savedTheme === undefined)
         localStorage.setItem("theme", "system");
-      console.log(treatedSavedTheme);
       const currentTheme = themeReverseMap.get(treatedSavedTheme)!;
       setTheme(themeReverseMap.get(treatedSavedTheme)!);
       document.documentElement.classList.remove("light");
