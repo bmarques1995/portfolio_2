@@ -3,6 +3,7 @@ import Appearance from "@/components/appearance";
 import LanguageSetter from "@/components/language";
 import Window from "@/components/window";
 import { useLanguageContext } from "@/hooks/languageContext";
+import WidgetWrapper from "@/components/widgetWrapper";
 
 export default function Settings() {
   /*
@@ -12,13 +13,15 @@ export default function Settings() {
   */
   const {translator} = useLanguageContext();
   return (
-    <div>
-      <Window title={translator('appearance.window')}>
-        <Appearance />
-      </Window>
-      <Window title={translator('language.window')}>
-        <LanguageSetter />
-      </Window>
+    <div style={{padding: '8px'}}>
+      <WidgetWrapper maxSetWidth={720}>
+        <Window title={translator('appearance.window')}>
+          <Appearance />
+        </Window>
+        <Window title={translator('language.window')}>
+          <LanguageSetter />
+        </Window>
+      </WidgetWrapper>
     </div>
   );
 }

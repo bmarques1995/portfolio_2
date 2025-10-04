@@ -1,0 +1,8 @@
+.widget-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.widget-wrapper > *{
+    flex-grow: 1;
+}
