@@ -14,7 +14,7 @@ export default function Footer() {
         
         <footer className="footer-component">
             <WidgetWrapper maxSetWidth={540}>
-                <Window title="social-links">
+                <Window title="social-links" useLabels={false}>
                     <div className="social-container">
                         <p className="presenter-msg"><span>$</span> echo "{translator('footer.contact')}"</p>
                         <p className="echo-msg">{translator('footer.contact')}</p>

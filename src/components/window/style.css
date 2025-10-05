@@ -11,9 +11,7 @@
 }
 
 .title-bar{
-    
     display: flex;
-    justify-content: space-between;
 }
 
 .space-controller{

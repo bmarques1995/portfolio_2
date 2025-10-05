@@ -9,6 +9,6 @@ export default function HeaderItem({name, link, selected}: {name: string, link: 
     if(selected)
         className = defaultClassName + " selected";
     return (
-        <a onClick={() => router.push(link)} className={className}><span>&gt;</span> {name}</a>
+        <a role='button' onClick={() => router.push(link)} className={className}><span>&gt;</span> {name}</a>
     );
 }

@@ -15,10 +15,10 @@ export default function Settings() {
   return (
     <div style={{padding: '8px'}}>
       <WidgetWrapper maxSetWidth={720}>
-        <Window title={translator('appearance.window')}>
+        <Window title={translator('appearance.window')} useLabels={true}>
           <Appearance />
         </Window>
-        <Window title={translator('language.window')}>
+        <Window title={translator('language.window')} useLabels={true}>
           <LanguageSetter />
         </Window>
       </WidgetWrapper>
