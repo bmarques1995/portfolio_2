@@ -1,5 +1,4 @@
 "use client";
-import WindowLabels from "../windowLabels";
 import "./style.css";
 
 export default function WidgetWrapper({children, maxSetWidth}: Readonly<{

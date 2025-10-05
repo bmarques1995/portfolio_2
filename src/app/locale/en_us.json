@@ -1,5 +1,10 @@
 {
     "translation":{
+        "root": {
+            "titles": {
+                "technologies": "technologies"
+            }
+        },
         "footer": {
             "contact": "Get in touch"
         },
