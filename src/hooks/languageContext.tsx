@@ -62,7 +62,19 @@ export const LanguageContextProvider = ({ children }: ThemeContextProviderProps)
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem("language");
-        const treatedSavedLanguage = (savedLanguage === null || savedLanguage === "" || savedLanguage === undefined) ? "en_us" : savedLanguage;
+        let treatedSavedLanguage; 
+        if(savedLanguage === null || savedLanguage === "" || savedLanguage === undefined)
+        {
+          const primaryLanguage = navigator.language.toLowerCase().replace("-", "_");
+          if(languageReverseMap.has(primaryLanguage)){
+            treatedSavedLanguage = primaryLanguage;
+          }
+          else{
+            treatedSavedLanguage = 'en_us';
+          }
+        } else{ 
+          treatedSavedLanguage = savedLanguage;
+        }
         languageSetter(languageReverseMap.get(treatedSavedLanguage)!);
     }, []);
 
