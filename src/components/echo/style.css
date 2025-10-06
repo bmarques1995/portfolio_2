@@ -1,0 +1,3 @@
+.echo-msg, .presenter-msg > span{
+    color: var(--access-color);
+}

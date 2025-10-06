@@ -1,0 +1,67 @@
+---
+title: 'CMake: Undesired King'
+english-title: 'CMake: Undesired King'
+publishedAt: '2025-09-26'
+summary: 'How has CMake gotten the podium of the build system, even being so rejected?'
+subject: 'cmake'
+---
+
+## Introduction
+
+C, C++, and Assembly form the backbone of almost every computing system, since they interact directly with the operating system with minimal overhead. However, there is a recurring nightmare when developing in these languages: compiling multiple sources, linking them, deciding whether the code is for an executable or a library, setting include paths, and linking against libraries (which are dependencies). In short: a lot of manual work for any serious project. To solve these problems, tools like Makefiles and Visual Studio solutions were created. These files manage much of the work related to building a C/C++ program.
+
+But the problem isn’t fully solved, since Makefiles and Visual Studio project files are incompatible. And why is this a problem? Imagine there’s a utility for compressing data, and both Linux and Windows users need it. How do you solve this? By creating both a Makefile and a Visual Studio project? That works temporarily. But what happens when a new version of Visual Studio is released? Do you discard the old project file and generate a new one? Do you reconfigure all the dependencies? Clearly, that’s impractical.
+
+This is where CMake steps in. Instead of writing and maintaining separate build files for each platform, you define your project once using CMake. From that single configuration, CMake can generate the proper build files for a variety of systems, such as:
+
+- Unix Makefiles
+- Visual Studio
+- Ninja
+- Xcode  
+and others.
+
+![CMake's Design](/posts/Single_Source_Build.png)
+
+So, is CMake basically a middleware for other build systems? Exactly — you nailed it. One key concept in learning is to recognize similarities, which makes it easier to understand a concept.
+
+## A starter example with CMake
+
+Here is an example of a simple CMake, the `CMakeLists.txt` configuration for a library and an executable:
+
+```cmake
+cmake_minimum_required(VERSION 3.22)
+
+# CXX is one of C++ extensions, and CMake uses CXX to refer to C++
+project(Example LANGUAGES CXX)
+
+# Finds the required Qt6 components
+find_package(Qt6 COMPONENTS Core Widgets Gui REQUIRED)
+
+# Define a library
+add_library(Example example.h example.cpp)
+target_include_directories(Example PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(Example PUBLIC Qt6::Core)
+
+# Define an executable that links against the library
+add_executable(Example_Executable example_exec.h example_exec.cpp)
+target_link_libraries(Example_Executable PRIVATE Example)
+```
+
+One thing to notice is that CMake's syntax isn’t particularly friendly, and many programmers consider it convoluted (or confusing) — and indeed it is.
+
+Several alternatives have tried to replace CMake — Premake, Meson, Bazel, and others — but none have succeeded. CMake remains king because it is the most used, predictable, and mature. Even with its convoluted syntax, it continues to dominate the world of C/C++ build systems.
+
+## Conclusion
+
+CMake isn’t \"the hero we asked for\" — and certainly not \"the one we love\" — but it’s \"the one we rely on.\" Mature, predictable, and widely adopted, it remains the king of C/C++ build systems.
+
+## Projects that use CMake
+
+- [Blender](https://github.com/blender/blender.git)
+- [OBS Studio](https://github.com/obsproject/obs-studio.git)
+- [MySQL](https://github.com/mysql/mysql-server.git)
+- [Qt](https://code.qt.io/cgit/)
+- [QBitTorrent](https://github.com/qbittorrent/qBittorrent.git)
+- [SDL](https://github.com/libsdl-org/SDL.git)
+- [zlib](https://github.com/madler/zlib.git)
+- [zstd](https://github.com/facebook/zstd.git)

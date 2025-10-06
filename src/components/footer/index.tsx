@@ -7,6 +7,7 @@ import Instagram from "@/../../public/instagram.svg"
 import ExternalLink from "@/components/externalLink";
 import './style.css'
 import WidgetWrapper from "@/components/widgetWrapper";
+import EchoCommand from "../echo";
 
 export default function Footer() {
     const {translator} = useLanguageContext();
@@ -16,8 +17,7 @@ export default function Footer() {
             <WidgetWrapper maxSetWidth={540}>
                 <Window title="social-links" useLabels={false}>
                     <div className="social-container">
-                        <p className="presenter-msg"><span>$</span> echo "{translator('footer.contact')}"</p>
-                        <p className="echo-msg">{translator('footer.contact')}</p>
+                        <EchoCommand text={translator('footer.contact')}/>
                         <ul>
                             <li><ExternalLink link="https://www.linkedin.com/in/bruno-silva-marques/" title="Linkedin" icon={<Linkedin className="linkedin" width={16} height={16}/>}/></li>
                             <li><ExternalLink link="https://github.com/bmarques1995" title="Github" icon={<Github className="github" width={16} height={16}/>}/></li>
