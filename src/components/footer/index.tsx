@@ -1,9 +1,9 @@
 "use client";
 import { useLanguageContext } from "@/hooks/languageContext";
 import Window from "@/components/window";
-import Linkedin from "@/../../public/linkedin.svg"
-import Github from "@/../../public/github.svg"
-import Instagram from "@/../../public/instagram.svg"
+import Linkedin from "@/../../public/assets/linkedin.svg"
+import Github from "@/../../public/assets/github.svg"
+import Instagram from "@/../../public/assets/instagram.svg"
 import ExternalLink from "@/components/externalLink";
 import './style.css'
 import WidgetWrapper from "@/components/widgetWrapper";

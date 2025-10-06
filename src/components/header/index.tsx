@@ -1,8 +1,8 @@
 "use client";
 import WindowLabels from "../windowLabels";
 import './style.css';
-import Bars from "@/../../public/bars.svg";
-import CloseCross from "@/../../public/close-cross.svg"
+import Bars from "@/../../public/assets/bars.svg";
+import CloseCross from "@/../../public/assets/close-cross.svg"
 import { useState, useEffect } from "react";
 import NavList from "../navList";
 import { useRouter, usePathname } from "next/navigation";

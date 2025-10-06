@@ -1,10 +1,10 @@
 "use client";
 import Window from "../window";
-import CMake from "@/../../public/cmake.svg";
-import Cpp from "@/../../public/cpp.svg";
-import C from "@/../../public/c.svg";
-import Nextjs from "@/../../public/nextjs.svg";
-import Python from "@/../../public/python.svg";
+import CMake from "@/../../public/assets/cmake.svg";
+import Cpp from "@/../../public/assets/cpp.svg";
+import C from "@/../../public/assets/c.svg";
+import Nextjs from "@/../../public/assets/nextjs.svg";
+import Python from "@/../../public/assets/python.svg";
 import TechnologyCard from "../technologyCard";
 import { useLanguageContext } from "@/hooks/languageContext";
 import './style.css'
