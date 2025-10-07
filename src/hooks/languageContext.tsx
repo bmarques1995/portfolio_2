@@ -17,7 +17,8 @@ type LanguageContextType = {
   systemLanguage: SystemLanguage;
   setSystemLanguage: (language: SystemLanguage) => void;
   languageMap: Map<SystemLanguage, string>;
-  translator: TFunction<"translation", undefined>
+  translator: TFunction<"translation", undefined>;
+  languageFence: boolean;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -32,6 +33,7 @@ export const useLanguageContext = () => {
 
 export const LanguageContextProvider = ({ children }: ThemeContextProviderProps) => {
     const [systemLanguage, setSystemLanguage] = useState(SystemLanguage.EN_US);
+    const [languageFence, setLanguageFence] = useState(false);
     const languageMap = new Map<SystemLanguage, string>([
       [SystemLanguage.EN_US, "en_us"],
       [SystemLanguage.PT_BR, "pt_br"],
@@ -56,11 +58,13 @@ export const LanguageContextProvider = ({ children }: ThemeContextProviderProps)
         'systemLanguage': systemLanguage,
         'setSystemLanguage': languageSetter,
         'languageMap': languageMap,
+        'languageFence': languageFence,
         'translator': t
     }),
     [systemLanguage, setSystemLanguage, languageMap, t]);
 
     useEffect(() => {
+      const saveLanguageData = async () => {
         const savedLanguage = localStorage.getItem("language");
         let treatedSavedLanguage; 
         if(savedLanguage === null || savedLanguage === "" || savedLanguage === undefined)
@@ -76,6 +80,10 @@ export const LanguageContextProvider = ({ children }: ThemeContextProviderProps)
           treatedSavedLanguage = savedLanguage;
         }
         languageSetter(languageReverseMap.get(treatedSavedLanguage)!);
+        setLanguageFence(true);
+      };
+      
+      saveLanguageData();
     }, []);
 
     return (

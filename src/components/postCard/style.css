@@ -1,0 +1,57 @@
+.post-card{
+    border: 1px solid var(--foreground);
+    background-color: var(--background);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    row-gap: 12px;
+    width: 100%;
+}
+
+.card-title-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 12px 0;
+}
+
+.post-card > button{
+    padding: 8px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+}
+
+.card-title{
+    font-size: 18px;
+}
+
+.card-title:hover,
+.card-headline:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.card-headline{
+    font-size: 16px;
+}
+
+.card-info > h3,
+.card-info > h2{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-redirector{
+    width: 200px;
+    background-color: var(--background);
+    border: 1px solid var(--foreground);
+    color: var(--foreground);
+    border-radius: 5px;
+}
+
+.card-redirector{
+    padding: 8px;
+    cursor: pointer;
+}

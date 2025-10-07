@@ -1,0 +1,14 @@
+.posts-container{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+/*.posts-title{
+    padding: 0 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    height: 19px;
+}*/

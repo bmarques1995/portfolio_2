@@ -1,7 +1,7 @@
 "use client";
-import Sun from "@/../../public/sun.svg"
-import Moon from "@/../../public/moon.svg"
-import Monitor from "@/../../public/monitor.svg"
+import Sun from "@/../../public/assets/sun.svg"
+import Moon from "@/../../public/assets/moon.svg"
+import Monitor from "@/../../public/assets/monitor.svg"
 import './style.css';
 import { useThemeContext, Theme } from "@/hooks/themeContext";
 import { useLanguageContext } from "@/hooks/languageContext";

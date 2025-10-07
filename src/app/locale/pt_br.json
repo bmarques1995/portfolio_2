@@ -1,5 +1,8 @@
 {
     "translation":{
+        "post": {
+            "readCommand": "Mais Detalhes"
+        },
         "root": {
             "titles": {
                 "technologies": "tecnologias"

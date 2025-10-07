@@ -12,7 +12,7 @@ C, C++, and Assembly form the backbone of almost every computing system, since t
 
 But the problem isn’t fully solved, since Makefiles and Visual Studio project files are incompatible. And why is this a problem? Imagine there’s a utility for compressing data, and both Linux and Windows users need it. How do you solve this? By creating both a Makefile and a Visual Studio project? That works temporarily. But what happens when a new version of Visual Studio is released? Do you discard the old project file and generate a new one? Do you reconfigure all the dependencies? Clearly, that’s impractical.
 
-This is where CMake steps in. Instead of writing and maintaining separate build files for each platform, you define your project once using CMake. From that single configuration, CMake can generate the proper build files for a variety of systems, such as:
+This is where CMake \(or Cross Platform Makefile Generator\) steps in. Instead of writing and maintaining separate build files for each platform, you define your project once using CMake, with the file `CMakeLists.txt`. From that single configuration, CMake can generate the proper build files for a variety of systems, such as:
 
 - Unix Makefiles
 - Visual Studio
@@ -22,7 +22,7 @@ and others.
 
 ![CMake's Design](/posts/Single_Source_Build.png)
 
-So, is CMake basically a middleware for other build systems? Exactly — you nailed it. One key concept in learning is to recognize similarities, which makes it easier to understand a concept.
+So, is CMake basically a middleware for other build systems? Exactly — you nailed it. Remember: one key concept in learning is to recognize similarities, which makes it easier to understand a concept.
 
 ## A starter example with CMake
 

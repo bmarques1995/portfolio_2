@@ -10,6 +10,12 @@
     overflow: hidden;
 }
 
+.file-title{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 19px;
+}
+
 .title-bar{
     display: flex;
 }
