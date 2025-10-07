@@ -16,7 +16,7 @@ export default function Posts({context}: Readonly<{context: string}>)
         const searchPosts = async () =>{
             if(languageFence) {
                 const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_POSTS_HOST}/api/posts/posts/${language}`, {
+                    `${process.env.NEXT_PUBLIC_POSTS_HOST}/api/posts/${context}/${language}`, {
                         method: "GET"
                     }
                 );
@@ -31,7 +31,7 @@ export default function Posts({context}: Readonly<{context: string}>)
         <WidgetWrapper maxSetWidth={720}>
             <div className="posts-container">
                 {postMetadata.map((post, index) => {
-                    return(<PostCard key={index} metadata={post.metadata} slug={post.slug}/>);
+                    return(<PostCard context={context} key={index} metadata={post.metadata} slug={post.slug}/>);
                     
                 })}
             </div>

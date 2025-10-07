@@ -5,6 +5,5 @@ export async function GET(req: Request, { params }: { params: { context: string,
 {
     const { context, locale, slug } = await params;
     const post = getMDXPost(path.join(process.cwd(), 'src', 'app', 'articles', context, locale), slug);
-    console.log(post);
     return new Response(JSON.stringify(post));
 }

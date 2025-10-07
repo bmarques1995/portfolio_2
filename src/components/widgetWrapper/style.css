@@ -6,3 +6,7 @@
 .widget-wrapper > *{
     flex-grow: 1;
 }
+
+.widget-wrapper-container{
+    width: 100%;
+}

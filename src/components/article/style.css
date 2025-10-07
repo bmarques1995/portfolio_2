@@ -1,0 +1,31 @@
+.markdown-post img{
+    display: block;
+    width: 100%;
+}
+.markdown-post *,
+.markdown-post{
+    width: 100%;
+}
+
+.markdown-post p {
+    text-align: justify;
+    text-indent: 16px;
+}
+
+.markdown-post code,
+.markdown-post p{
+    font-size: 16px;
+}
+
+.markdown-post code,
+.markdown-post pre{
+    background-color: var(--selected-background);
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.markdown-post{
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}

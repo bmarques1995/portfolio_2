@@ -40,7 +40,6 @@
 .card-info > h2{
     width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .card-redirector{
