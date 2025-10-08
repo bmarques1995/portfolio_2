@@ -5,7 +5,17 @@
         },
         "root": {
             "titles": {
-                "technologies": "tecnologias"
+                "technologies": "Tecnologias"
+            },
+            "about": {
+                "title": "Sobre mim",
+                "paragraphs": [
+                    "Sou o Bruno Marques — o filho dos Marques — programador e blogueiro de primeira viagem. Para ser sincero, estou meio quebrado no momento em que escrevo esta apresentação, mas isso não me impede de querer compartilhar conhecimento nos mais variados assuntos. E, claro, não poderia deixar de mencionar o mais importante: sou um amante de jogos eletrônicos. Acredite, essa informação vai aparecer algumas (várias) vezes por aqui.",
+                    "Apesar de abordar temas diversos, meu interesse central gira em torno do mundo dos jogos. Lembra da menção? Pois é. Um dos aspectos que mais me fascina é o lado técnico dos games: o que há por trás da cortina? Como funcionam as entranhas de um jogo, desde o simples e cativante Stardew Valley até o épico e denso Elden Ring? O que o computador realmente faz para transformar essas ideias em experiências visuais e interativas? Ah, sim — beleza também importa, e muito.",
+                    "Meu pontapé inicial na programação não foi dos mais românticos: aconteceu em uma aula da faculdade, lá em 2014, com meu primeiro programa em C. O clássico printf ficou na memória. De lá pra cá, já escrevi software em Python, Node.js, C#, CMake, C++ (minha favorita!) — e a lista continua. Embora tenha experiência com desenvolvimento web e APIs REST, meu verdadeiro foco está em áreas menos exploradas: aplicações de alto desempenho, motores gráficos, sistemas de controle de tráfego e afins.",
+                    "Por isso, este blog será um espaço para mergulhar em assuntos que muitas vezes ficam à margem da maioria dos tutoriais: compilação de bibliotecas complexas, estrutura interna de engines, matemática aplicada a jogos, gráficos em tempo real, e outras paixões técnicas que orbitam o mundo dos games.",
+                    "Se você também se interessa por essas camadas mais profundas do desenvolvimento, talvez encontre aqui um pouco do que procura."
+                ]
             }
         },
         "footer": {

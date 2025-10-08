@@ -5,8 +5,18 @@
         },
         "root": {
             "titles": {
-                "technologies": "technologies"
-            }
+                "technologies": "Technologies"
+            },
+            "about": {
+                "title": "About me",
+                "paragraphs": [
+                    "I'm Bruno Marques — the Marques's son — a programmer and first-time blogger. To be honest, I’m a bit broke as I write this, but that won’t stop me from sharing knowledge on a wide range of topics. And I can’t forget the most important thing: I’m a huge fan of video games. Trust me, that fact will show up here more than once.",
+                    "While I might touch on various subjects, my primary focus is on the inner workings of games. Remember what I said earlier? Exactly. One thing that truly fascinates me is the technical side of game development — what's happening behind the curtain? How do games work under the hood, from the charming simplicity of Stardew Valley to the massive, intricate world of Elden Ring? What exactly is the computer doing to bring these beautiful experiences to life? Yes, beauty matters — a lot.",
+                    "My journey into programming wasn't exactly cinematic. It started back in 2014, during a university class, with my very first program in C. That first printf stuck with me. Since then, I’ve written software in Python, Node.js, C#, CMake, and C++ (my favorite!) — and the list keeps growing. Though I’ve worked with web development and REST APIs, my real passion lies in the more “underground” domains: high-performance applications, game engines, traffic control systems, and the like.",
+                    "That’s why this blog exists — a place to dive deep into the uncharted waters of development. Expect topics like compiling complex libraries, the internal structure of game engines, game-related math, real-time graphics, and other “child’s play” orbiting the world of games.",
+                    "If you're someone who loves exploring the deeper layers of software development, you just might be in the right place."
+                ]
+            } 
         },
         "footer": {
             "contact": "Get in touch"
