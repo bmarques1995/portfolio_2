@@ -1,0 +1,106 @@
+---
+title: 'Compilando a Qt do zero.'
+englishTitle: 'Building Qt from scratch.'
+publishedAt: '2025-10-13'
+summary: 'Somente o código fonte da Qt'
+subject: 'qt'
+---
+
+# Qt
+
+Qt é o framework mais popular utilizado para criar aplicações gráficas, multiplataforma, nativas em C++. Pode ser utilizado em vários tipos de sistema, indo de telas de um restaurante, caixa de supermercados a motores gráficos. É projetado para ter uma compatibilidade de interface com Windows, MacOS, distribuições Linux, FreeBSD e outros. É licenciado tanto para projetos Open Source (com a maioria dos pacotes sob a licença LGPL) quanto soluções proprietárias.
+
+Ao compilar a Qt do zero, há uma série de benefícios, comparados a utilizar a instalação completa. Por ser um sistema de código aberto, a Qt permite personalizações e modificações do software, exatamente daquele pedaço problemático que você adoraria fazer diferente. Outra vantagem, a Qt usa a licença LGPL3.0, que permite que seu software fechado utilize a Qt, desde que permita mecanismo de modificação da biblioteca(relink)(Usá-la como DLL já é o suficiente).
+
+# Pré Requisitos
+
+O código fonte original da Qt está disponível [aqui](https://code.qt.io/), ao analisar primariamente o endereço, você verá inúmeros módulos, não se preocupe, só lembre que a Qt é dividida em um conjunto de módulos hierárquicos, onde a compilação de um módulo normalmente depende de um ou mais módulos primário, sendo o módulo QtBase o núcleo da Qt, contendo as funcionalidades básicas, tais como janelas, contextos gráficos(não recomendado\*), camadas de rede e outras funcionalidades. É o único módulo que pode ser compilado sem outros módulos.
+
+\* Gera acoplamento de código, o que é indesejado em uma aplicação mais estruturada
+
+![QtHome](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/qt_scratch/qt_home.png)
+Homepage cgit da Qt
+
+Para compilar a Qt, algumas ferramentas serão necessárias:
+- Git
+- CMake
+- NASM (para Linux e FreeBSD)
+- Ninja Build (Caso use o visual studio, ele já vêm com uma versão do Ninja)
+- Compiladores:
+    - GCC/Clang com Make \(Linux, MacOS, FreeBSD, Windows\)
+    - MSVC \(No windows, MSVC pode ser usado no lugar do ecossistema Make\)
+- pacotes X11\*:
+    - xorg-dev
+- pacotes Wayland\*:
+    - libwayland-dev libxkbcommon-dev wayland-protocols extra-cmake-modules
+- Python (opcional)
+
+\* Pacotes relativos aos protocolos X11 e Wayland, são requeridos em distros linux e freebsd, que utilizam esses gerenciadores. Os pacotes listados são relativos a distribuições baseadas em Debian. Mais detalhes [aqui](https://www.glfw.org/docs/3.3.2/compile_guide.html#compile_deps_x11)
+
+# Compilando a Qt:
+
+Primeiramente precisamos clonar o repositório Qt. Para isso, na pasta desejada (assumindo que você já está familiarizado com o Git), `git clone https://code.qt.io/qt/qtbase.git`, a partir daí, as instruções mudam de acordo com o sistema operacional.
+
+O comando de compilação da Qt segue o padrão:
+
+``` shell
+cmake -S <source_dir> -B <build_dir> -G Ninja -DQT_FEATURE_force_bundled_libs=ON -DCMAKE_INSTALL_PREFIX="<install_prefix>" -DCMAKE_PREFIX_PATH="<install_prefix>" -DCMAKE_C_COMPILER=<c_compiler> -DCMAKE_CXX_COMPILER=<cxx_compiler> -DCMAKE_ASM_COMPILER=<asm_compiler> -DCMAKE_BUILD_TYPE="<build_mode>"
+```
+
+com:
+
+- source_dir: localização do código fonte
+- build_dir: localização dos arquivos de projeto
+- `G Ninja`: indica ao cmake para usar o ninja para build
+- `-DQT_FEATURE_force_bundled_libs=ON`: específico da Qt, fala para compilar dependências a partir da própria Qt
+- install_prefix: local de instalação
+- build_mode: indica o modo de compilação, normalmente com os valores Debug (para inspeção) ou Release, para o usuário 
+
+Os valores `source_dir`, `build_dir` e `install_prefix` são de sua escolha, já os outros são fixos, variando apenas conforme o sistema operacional.
+
+Agora, execute:
+
+``` shell
+cmake --build <build_dir>
+cmake --install
+```
+
+## Configurações Windows
+
+Para compilar a Qt no windows é necessário executar o script `Launch-VsDevShell.ps1`, que configura as variáveis de ambiente do Visual Studio, localizado em `C:\Program Files\Microsoft Visual Studio\<ANO>\<VERSÃO>\Common7\Tools`
+
+Aqui seguem os valores específicos para windows:
+
+- c_compiler: "cl"
+- cxx_compiler: "cl"
+- asm_compiler: "ml64"
+
+\*cl é o compilador do visual studio
+\*ml64 o assembler
+
+## Configurações Distro Linux e FreeBSD
+
+As configurações para uma distro Linux ou FreeBSD podem variar de nome, mas consistem nos pacotes de desenvolvimento das bibliotecas de janela (X11 ou Wayland), pois a Qt constitui uma casca para os protocolos de janela, como o ORM para o banco de dados.
+
+Aqui seguem os valores específicos para Linux ou FreeBSD:
+
+- c_compiler: "gcc" (somente Linux) ou "clang"
+- cxx_compiler: "g++" (somente Linux) ou "clang++"
+- asm_compiler: "nasm"
+
+Caso esteja utilizando sua distribuição Linux/FreeBSD com Wayland, um pacote adicional é necessário no Qt, para tal utilize:
+
+``` shell
+git clone https://code.qt.io/qt/qtwayland.git
+```
+
+e compile-o com os argumentos da `qtbase`, somente mudando o `source_dir` e o `build_dir`.
+
+# Conclusão
+
+Pronto, temos o Qt compilado e pronto para uso. Mas qual a vantagem de compilar do código fonte em vez de baixar? Você está pensando. Vamos lá, com o pacote compilado por você:
+
+- Você tem uma versão minificada, com somente as suas necessidades
+- Você tem o caminho para estudar e modificar a Qt para o seu uso
+
+Ficou com alguma dúvida? Basta me chamar, estou a plena disposição em meu [Instagram](https://www.instagram.com/bsmarquesdev1995) e [Linkedin](https://www.linkedin.com/in/bruno-silva-marques/).

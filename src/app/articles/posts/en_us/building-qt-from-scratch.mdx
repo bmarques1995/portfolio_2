@@ -1,0 +1,105 @@
+---
+title: 'Building Qt from scratch.'
+englishTitle: 'Building Qt from scratch.'
+publishedAt: '2025-10-13'
+summary: 'Only the source of Qt'
+subject: 'qt'
+---
+
+# Qt
+
+Qt is a framework used on graphic apps creation, multiplatform, native on C++. Can be used in a huge set of system, from restaurant's (or supermarket) cashier to game engines. Was project to have a native interface on Windows, MacOS, Linux's distros, FreeBSD and others. Qt provides licenses for both Open Source (with most of the projects licensed under LGPL) as proprietary projects.
+
+Building Qt from scratch brings a lot of benefits, comparing to the full installation. Being open source, Qt allows modifications, on that headache you have using the framework. Another advantage, Qt is licensed under LGPL3.0, that allows you to use it closed source, since you provide a relink mechanism(compiling it as DLL is enough).
+
+# Prerequisites
+
+Qt's original source code is available [here](https://code.qt.io/), at the first look, you'll see a lot of modules, don't worry, only remember that Qt is partitioned on an hierarchical module set, with modules usually being dependent of others, with QtBase as the root module, with the core functions, as windows, graphics context(i don't recommend to use), network layer and others. Is the only independent module.
+
+![QtHome](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/qt_scratch/qt_home.png)
+Qt cgit's homepage
+
+To build Qt, some programs will be required:
+
+- Git
+- CMake
+- NASM (for Linux and FreeBSD)
+- Ninja Build (If you are using visual studio, it has its own version of ninja)
+- Compilers:
+    - GCC/Clang with Make \(Linux, MacOS, FreeBSD, Windows\)
+    - MSVC \(On windows, MSVC projects can replace Make\)
+- X11 packages\*:
+    - xorg-dev
+- Wayland packages\*:
+    - libwayland-dev libxkbcommon-dev wayland-protocols extra-cmake-modules
+- Python (optional)
+
+\* Packages related to X11 and Wayland, are required at linux's distros and freebsd, that use these connectors. The mentioned packages names are for Debian based distros, you can see more [here](https://www.glfw.org/docs/3.3.2/compile_guide.html#compile_deps_x11)
+
+# Building Qt:
+
+First we need to clone Qt's repository, for this, at the destination folder(I will presume that you know git), run `git clone https://code.qt.io/qt/qtbase.git`, at that point, the instructions are relative to the target operating system.
+
+The Qt's compile commands follows the pattern:
+
+``` shell
+cmake -S <source_dir> -B <build_dir> -G Ninja -DQT_FEATURE_force_bundled_libs=ON -DCMAKE_INSTALL_PREFIX="<install_prefix>" -DCMAKE_PREFIX_PATH="<install_prefix>" -DCMAKE_C_COMPILER=<c_compiler> -DCMAKE_CXX_COMPILER=<cxx_compiler> -DCMAKE_ASM_COMPILER=<asm_compiler> -DCMAKE_BUILD_TYPE="<build_mode>"
+```
+
+with:
+
+- source_dir: source location directory
+- build_dir: output project files
+- `G Ninja`: tells cmake to use ninja for build
+- `-DQT_FEATURE_force_bundled_libs=ON`: Qt's feature, force to use Qt's version of dependencies
+- install_prefix: where the lib will be installed
+- build_mode: tells cmake the build mode, normally debug or release.
+
+source_dir, build_dir e install_prefix are defined by the user, however the remaining are static, for all or per OS\(Operating System\)
+
+after all, just run:
+
+``` shell 
+cmake --build <build_dir>
+cmake --install
+```
+
+## Windows's settings:
+
+To build Qt you must run the `Launch-VsDevShell.ps1`, to start visual studio's environment variable, available at `C:\Program Files\Microsoft Visual Studio\<YEAR>\<VERSION>\Common7\Tools`
+
+Below follows windows's target values:
+
+- c_compiler: "cl"
+- cxx_compiler: "cl"
+- asm_compiler: "ml64"
+
+\*cl is the visual studio's compiler
+\*ml64 is the assembler
+
+## Linux's Distro and Freebsd settings:
+
+Linux or FreeBSD settings can differ some names, but consist on the development packages for the window libraries (X11 or Wayland), where Qt is only a hull, a wrapper for the window protocols, like the ORM for the databases.
+
+Here comes the values for Linux and FreeBSD:
+
+- c_compiler: "gcc" (somente linux) or "clang"
+- cxx_compiler: "g++" (somente linux) or "clang++"
+- asm_compiler: "nasm"
+
+If you are using Linux/FreeBSD with Wayland, an additional package will be required for qt, for this just run:
+
+``` shell 
+git clone https://code.qt.io/qt/qtwayland.git
+```
+
+and build it with qtbase's arguments, just replacing `source_dir` and `build_dir`.
+
+# Final thoughts
+
+Ok, we have Qt built from scratch and ready to use. However, which is the advantage to build Qt from source instead of download it? You're thinking. Let's go, with the built library from scratch you:
+
+- Have a minified version, with only your demands
+- Have the startup to study and modify Qt for yourself.
+
+Any questions? Just get in touch, I'm available at [Instagram](https://www.instagram.com/bsmarquesdev1995) and [Linkedin](https://www.linkedin.com/in/bruno-silva-marques/).

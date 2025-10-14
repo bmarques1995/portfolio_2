@@ -9,7 +9,19 @@
 
 .markdown-post p {
     text-align: justify;
-    text-indent: 16px;
+    text-indent: 8px;
+}
+
+.markdown-post li {
+    text-indent: 20px;
+}
+
+.markdown-post li > ul > li {
+    text-indent: 40px;
+}
+
+.markdown-post a {
+    color: var(--subtext-foreground);
 }
 
 .markdown-post code,

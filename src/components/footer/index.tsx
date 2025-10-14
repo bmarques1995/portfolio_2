@@ -21,7 +21,7 @@ export default function Footer() {
                         <ul>
                             <li><ExternalLink link="https://www.linkedin.com/in/bruno-silva-marques/" title="Linkedin" icon={<Linkedin className="linkedin" width={16} height={16}/>}/></li>
                             <li><ExternalLink link="https://github.com/bmarques1995" title="Github" icon={<Github className="github" width={16} height={16}/>}/></li>
-                            <li><ExternalLink link="https://github.com/bmarques1995" title="Instagram" icon={<Instagram className="github" width={16} height={16}/>}/></li>
+                            <li><ExternalLink link="https://www.instagram.com/bsmarquesdev1995" title="Instagram" icon={<Instagram className="github" width={16} height={16}/>}/></li>
                         </ul>
                     </div>
                 </Window>
