@@ -15,6 +15,5 @@ export async function GET(
             slug: post.slug
         };
     });
-    console.log(postsMetadata);
     return new Response(JSON.stringify(postsMetadata));
 }

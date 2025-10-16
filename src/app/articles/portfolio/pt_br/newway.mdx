@@ -1,0 +1,99 @@
+---
+title: 'Projeto Newway Intermediações'
+englishTitle: 'Newway Intermediações's Project'
+publishedAt: '2025-10-15'
+summary: 'Um sistema invertido de venda de carros'
+subject: 'django'
+---
+
+# A demanda
+
+[Newway Intermediações](https://newwayintermediacoes.com.br/) é uma plataforma de compra e venda de veículos voltada para revendedores \(pessoas jurídicas\), onde pessoas físicas podem anunciar seus carros e lojistas têm acesso a esses anúncios.
+Diferente de portais tradicionais como WebMotors, que focam na venda direta ao consumidor final, a Newway busca atender o caminho inverso: fornecer um canal exclusivo para abastecer o estoque das revendedoras.
+Em breve, será implementada a funcionalidade de repasse entre pessoas jurídicas, permitindo que revendedoras negociem veículos diretamente entre si.
+A ideia surgiu como uma prestação de serviço após o cliente identificar a falta de soluções específicas para esse nicho — um sistema pensado para lojistas, e não para consumidores finais.
+
+![Newway Home](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/home.png)
+Home da Newway
+
+# Stack e escolhas tecnológicas
+
+O sistema foi desenvolvido por mim e meu irmão com base nas tecnologias que já dominávamos e que oferecem bom desempenho e escalabilidade:
+
+- Backend: Django + Django REST Framework
+- Frontend: Next.js
+- Banco de dados: MySQL, integrado com o ORM do Django
+
+A escolha do Next.js também foi estratégica pensando no futuro: a ideia é portar a aplicação para dispositivos móveis usando Expo, que compartilha conceitos e estrutura semelhantes ao Next.js, facilitando a transição.
+
+Além disso, implementamos funções de criptografia para proteger dados sensíveis (mas sem spoiler de como 🤣).
+
+# Arquitetura da aplicação
+
+A estrutura geral da aplicação está dividida da seguinte forma:
+- Backend (Django):
+    - auth: gerenciamento de autenticação e tokens
+    - cars: controle de veículos, demandas e negociações
+- Frontend (Next.js):
+    - Páginas organizadas por tipo de usuário: cliente (PF), lojista (PJ) e administrador
+- Autenticação JWT com três tipos de token:
+    - Access Token: acesso às rotas protegidas
+    - Refresh Token: renovação do access token expirado
+    - Action Token: token temporário para ações específicas (ex: redefinição de senha)
+
+# Funcionalidades atuais
+
+## Autenticação
+
+- Login com Google ou e-mail/senha
+- Recuperação de senha com uso de action token
+
+## Compra e venda de veículos
+
+- Venda direta: pessoas físicas cadastram seus carros para venda
+- Compra por demanda: lojistas registram faixas de valor e ano de modelos que desejam adquirir
+- O sistema realiza o match automático entre demandas e anúncios
+
+## Administração e mediação
+
+Administradores têm um papel central e podem:
+- Criar e remover produtos e demandas
+- Intermediar negociações entre clientes e lojistas
+- Receber comissão por cada venda intermediada
+- Dashboard administrativo: visão de negociações
+
+# Próximas funcionalidades
+
+- Repasse PJ-PJ: permitir que revendedoras vendam veículos entre si
+- Busca avançada: com filtros por marca, modelo, ano, valor, região e outros
+- Dashboard administrativo: estatísticas e controle financeiro (Provável)
+
+# Um pouco da interface de uso:
+
+## Vendedor
+
+![Newway Seller](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/seller.png)
+Página do vendedor
+
+## Comprador
+
+![Newway Buyer](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/buyer_home.png)
+Ofertas
+
+![Newway Buyer Home](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/buyer_info.png)
+Informações do comprador
+
+# Considerações finais
+
+A Newway Intermediações é uma solução desenvolvida para preencher uma lacuna no mercado automotivo, focada especialmente em lojistas e revendedoras.
+
+Com uma base sólida, tecnologias modernas e uma arquitetura pensada para escalabilidade, o sistema já está funcionando e continuará evoluindo, com planos de expansão para dispositivos móveis no futuro próximo.
+
+# Tecnologias utilizadas
+
+- [Django](https://www.djangoproject.com) + [Django REST Framework](https://www.django-rest-framework.org)
+- [Next.js](https://nextjs.org)
+- [MySQL](https://www.mysql.com/)
+- [JWT](https://www.jwt.io/) \(Access, Refresh, Action\)
+- [Expo](https://expo.dev/) \(para versão mobile futura\)
+- [Google OAuth](https://developers.google.com/identity/protocols/oauth2?hl=pt-br)

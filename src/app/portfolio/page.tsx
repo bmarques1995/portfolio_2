@@ -1,9 +1,10 @@
 "use client";
+import Posts from "@/components/posts";
 
 export default function Home() {
   return (
     <div>
-      Portfolio Page resample
+      <Posts context="portfolio"/>
     </div>
   );
 }

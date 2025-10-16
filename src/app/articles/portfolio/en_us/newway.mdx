@@ -1,0 +1,101 @@
+---
+title: 'Newway Intermediações's Project'
+englishTitle: 'Newway Intermediações's Project'
+publishedAt: '2025-10-15'
+summary: 'The uno reverse for car trades'
+subject: 'django'
+---
+
+# The demand
+
+[Newway Intermediações](https://newwayintermediacoes.com.br/)\* is a platform to buy and sell vehicles that target dealers \(companies\), where final users can publish their cars and companies can see those publishings.
+Instead of usual car reselling sites, like CarGurus, focused on the user, Newway is focused on the reverse path: provide an infrastructure to fill the stock of the companies.
+Soon will be implemented the feature of trade at companies, where dealers can buy and sell by themselves.
+The idea came from a freelancing of a client that saw the poor supply for dealers and attacked that pain, provide for dealers, not the final user.
+
+![Newway Home](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/home.png)
+Newway's Home
+
+\* Newway was thought to work only on Brazil, so, if sold, this system must be adapted for the target country.
+
+# Stack choices
+
+Me and my brother have developed the solution based on previous technologies that we know and are designed for performance and scalability
+
+- Backend: Django + Django REST Framework
+- Frontend: Next.js
+- Database: MySQL, with Django's ORM integration
+
+Next.js was chosen thinking on a future port of the application for mobile, using Expo, that shares designs with Next.js, making the port easier.
+
+Also, cryptography was implemented to protect sensitive data (but how is a secret 🤣).
+
+# Application's architecture
+
+This the general application distribution:
+- Backend (Django):
+    - auth: gerenciamento de autenticação e tokens
+    - cars: controle de veículos, demandas e negociações
+- Frontend (Next.js):
+    - Pages distributed by user type: client (final user), dealer (company) and admin
+- JWT auth with three types of token:
+    - Access Token: access of protected routes
+    - Refresh Token: renews the expired access token
+    - Action Token: temporary token for unique actions (ex: redefine password)
+
+# Current functionalities
+
+## Auth
+
+- Login with Google or e-mail/password
+- Password recovery with action token
+
+## Vehicle Trade
+
+- Direct trade: final users post their vehicles for selling
+- On demand trade: the dealer registers value and year ranges for the desired vehicles
+- The system matches automaticly posts and demands
+
+## Admins e mediation
+
+Admins play an important role:
+- Create and remove post or demands
+- Mediate trades between dealers and final users
+- Earn comission with the trades
+- Admin dashboard: trades infos
+
+# Next features
+
+- Dealer-dealer trade: allow dealers to trade cars with themselves
+- Advanced search: filtering by company, name, year, value and other features.
+- Admin dashboard: statistics and cash flow control (Probable)
+
+# Quick user interface:
+
+## Seller
+
+![Newway Seller](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/seller.png)
+Seller's info
+
+## Buyer
+
+![Newway Buyer](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/buyer_home.png)
+Offers
+
+![Newway Buyer Home](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/newway/buyer_info.png)
+Buyer's info
+
+# Final thoughts
+
+Newway Intermediações is a solution to fill in a gap on automarker, focused on the dealer.
+
+With a robust set, modern technologies and majorly thought on longevity, the system is currently working and will keep evolving, with expansion for mobile as soon as possible.
+
+# Stacks
+
+- [Django](https://www.djangoproject.com) + [Django REST Framework](https://www.django-rest-framework.org)
+- [Next.js](https://nextjs.org)
+- [MySQL](https://www.mysql.com/)
+- [JWT](https://www.jwt.io/) \(Access, Refresh, Action\)
+- [Expo](https://expo.dev/) \(For mobile futurely\)
+- [Google OAuth](https://developers.google.com/identity/protocols/oauth2?hl=pt-br)

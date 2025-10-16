@@ -16,7 +16,7 @@ export default function Home() {
         const searchPost = async () =>{
             if(languageFence) {
                 const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_POSTS_HOST}/api/posts/posts/${language}/${params.slug}`, {
+                    `${process.env.NEXT_PUBLIC_POSTS_HOST}/api/posts/portfolio/${language}/${params.slug}`, {
                         method: "GET"
                     }
                 );
