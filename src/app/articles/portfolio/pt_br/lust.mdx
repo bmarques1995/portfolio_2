@@ -1,0 +1,157 @@
+---
+title: 'Lust, o Ápice do C++'
+englishTitle: 'Lust, C++ Masterpiece'
+publishedAt: '2025-10-21'
+summary: 'Motor gráfico experimental (não sei qual versão)'
+subject: 'cpp'
+---
+
+## Motivação
+
+Lust é um motor gráfico que desenvolvi como um laboratório para computação gráfica de alto desempenho, com foco em estudar Vulkan e Direct3D 12 — as APIs gráficas mais modernas para o desenvolvimento de aplicações gráficas.
+
+Foi criado com base no projeto `Hazel2D`, da playlist `Game Engine Series`, do desenvolvedor Yan Chernikov (The Cherno). Trata-se de um dos melhores projetos educacionais sobre construção de motores gráficos do zero, mesmo fazendo uso de algumas bibliotecas auxiliares.
+
+## Origem: Hazel2D e The Cherno
+
+O projeto Hazel2D também é um laboratório criado por Yan, com foco educacional para iniciantes em computação gráfica. Ele aborda os fundamentos de como um motor gráfico funciona, seus principais requisitos e sua arquitetura modular.
+
+Em linhas gerais, um motor é dividido em três partes principais: núcleo, editor e jogo.  
+- O **núcleo** concentra as funcionalidades vitais da aplicação, como conexão com a API gráfica, gerenciamento de scripts, cálculos matemáticos e o sistema ECS.  
+- O **editor** serve como camada de desenvolvimento e comunicação entre o núcleo e o jogo.  
+- O **jogo** é a aplicação final que consome os recursos oferecidos pelo motor.
+
+## Tecnologias do Hazel2D
+
+O projeto Hazel2D utiliza as seguintes tecnologias:
+
+- Premake – sistema de build
+- Spdlog
+- GLFW – gerenciamento de janelas
+- Glad – carregamento de funções OpenGL
+- GLM – operações matemáticas
+- Dear ImGui – debug rápido e interface
+- stb_image – carregamento de imagens
+- YAML-cpp – serialização
+- EnTT – ECS (Entity Component System)
+
+A arquitetura do projeto é dividida em três módulos principais:
+
+- **Hazel** (núcleo do motor)
+- **Hazelnut** (editor)
+- **Sandbox** (projeto de exemplo)
+
+## Tecnologias do Lust
+
+O motor Lust foi desenvolvido com uma arquitetura levemente modificada e adotando tecnologias diferentes, com foco em modernidade e flexibilidade multiplataforma:
+
+- CMake
+- Spdlog
+- SDL3
+- Vulkan e Direct3D 12
+- Eigen (com validação utilizando GLM)
+- Dear ImGui
+- LibPNG e libjpeg-turbo
+- Serialização dupla:
+    - JsonCpp (modo desenvolvimento)
+    - FlatBuffers (modo produção)
+- Qt – sistema de widgets
+- EnTT – ECS
+
+O projeto é dividido em cinco módulos principais:
+
+- **Utils** – utilitários (leitura de arquivos, logs etc.)
+- **ShaderManager** – compilação e interface de shaders
+- **Lust** – núcleo do motor
+- **Editor** – interface gráfica do editor
+- **Sandbox** – aplicação final de exemplo
+
+## Evolução para o Lust, escolhas e desafios
+
+Por se tratar de um projeto educacional, o Hazel2D adota tecnologias que não se encaixaram nas minhas necessidades de desenvolvimento nem nos planos de expansão do motor. Um exemplo crítico é o uso do Premake como sistema de build, o que limita a integração com sistemas como Linux e FreeBSD. 
+
+As decisões que tomei no Lust surgiram a partir de problemas identificados durante minha primeira tentativa de replicar o Hazel2D, além de desejos pessoais de evolução do projeto.
+
+### Principais escolhas e justificativas
+
+- **CMake** – Adotado por ser o padrão moderno para C/C++, com amplo suporte multiplataforma. Minha familiaridade veio do TCC, onde migrei de Premake para CMake devido à melhor compatibilidade com Linux.
+
+- **SDL3** – Comparado ao GLFW, possui melhor integração com janelas nativas (Win32, X11, Wayland, Cocoa) e suporte aprimorado a joystick, o que torna o desenvolvimento de jogos mais flexível.
+
+- **Vulkan e Direct3D 12 (D3D12)** – APIs modernas, de baixo nível, que oferecem maior controle e desempenho em relação ao OpenGL. Exigem mais trabalho, mas recompensam com eficiência e acesso direto ao hardware gráfico.
+
+- **Eigen (validada com GLM)** – Escolhida por sua robustez em operações de álgebra linear. Apesar de mais "crua" em comparação à GLM, oferece maior controle e possibilidades futuras. A GLM ainda é usada para validação nos testes unitários.
+
+- **LibPNG e libjpeg-turbo** – Escolhidas pela facilidade de integração com CMake, ao contrário da stb_image, que requer configuração manual.
+
+- **Serialização (JsonCpp + FlatBuffers)** – JSON foi a escolha natural por minha experiência prévia com desenvolvimento web. Já o uso de FlatBuffers se justifica pela performance necessária em builds de produção.
+
+- **Qt para o editor** – Indicada por um amigo que trabalha com a biblioteca. Qt é consolidada, poderosa e adequada para aplicações com interfaces complexas como um editor de jogos.
+
+- **Sistema de shaders (ShaderManager + DXC)** – Diferente do OpenGL, que compila shaders em tempo de execução, Vulkan e D3D12 exigem pré-compilação. Para isso, usei o DirectX Shader Compiler (DXC), que permite compilar HLSL para ambos.
+
+## Estado atual da Lust
+
+Atualmente, o motor já possui suporte para:
+
+- Renderização 2D
+- Sistema de scripts
+- Cenas e gerenciamento de camadas
+
+Já é possível criar jogos 2D simples, com um exemplo funcional incluído no projeto `Sandbox`.
+
+![Lust](https://media.githubusercontent.com/media/bmarques1995/portfolio_album/refs/heads/main/posts/lust/lust.png)
+
+## Futuras propostas
+
+Entre os próximos passos planejados para o Lust:
+
+- Integração com Box2D (física 2D)
+- Suporte a Git via `libgit2` no editor
+- Melhorias no sistema de serialização
+- Adição de compute e mesh pipeline
+- Uso da `libcurl` para requisições HTTP
+- Renderização 3D
+- Adição da JoltPhysics (física 3D)
+
+## Aprendizados
+
+Embora a Lust ainda esteja longe de ser um motor gráfico completo, o projeto me proporcionou uma grande evolução técnica e pessoal. Ter conseguido integrar texturas, criar scripts e manipular APIs gráficas de baixo nível foram marcos significativos.
+
+Minha experiência com desenvolvimento web foi fundamental para algumas decisões de design e arquitetura. Esse projeto reforçou minha autonomia, minha capacidade de aprendizado autodirigido e ampliou minha visão sobre desenvolvimento de software de médio a grande porte.
+
+## Links
+
+- [Repositório no GitHub](https://github.com/bmarques1995/Lust_V3)
+- [Hazel2D no GitHub](https://github.com/TheCherno/Hazel.git)
+- [Playlist - Game Engine Series (The Cherno)](https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT)
+- [Premake](https://premake.github.io/)
+- [CMake](https://cmake.org/)
+- [Spdlog](https://github.com/gabime/spdlog.git)
+- [GLFW](https://www.glfw.org/)
+- [SDL](https://www.libsdl.org/)
+- [Glad](https://gen.glad.sh/)
+- [Vulkan](https://vulkan.lunarg.com/)
+    - [Headers](https://github.com/KhronosGroup/Vulkan-Headers.git)
+    - [Loader](https://github.com/KhronosGroup/Vulkan-Loader.git)
+    - [SPIRV-Headers](https://github.com/KhronosGroup/SPIRV-Headers.git)
+    - [SPIRV-Tools](https://github.com/KhronosGroup/SPIRV-Tools.git)
+    - [Extensions](https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git)
+    - [Validation](https://github.com/KhronosGroup/Vulkan-ValidationLayers.git)
+- [D3D12 Agility SDK](https://devblogs.microsoft.com/directx/directx12agility/)
+- [DXC](https://github.com/microsoft/DirectXShaderCompiler.git)
+- [ImGUI](https://github.com/ocornut/imgui.git)
+- [LibPNG](https://sourceforge.net/p/libpng/code/ci/master/tree/)
+- [LibJPEGTurbo](https://github.com/libjpeg-turbo/libjpeg-turbo.git)
+- [STB](https://github.com/nothings/stb.git)
+- [EnTT](https://github.com/skypjack/entt.git)
+- [Qt](https://code.qt.io/)
+- [GLM](https://github.com/g-truc/glm.git)
+- [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page)
+- [Yamlcpp](https://github.com/jbeder/yaml-cpp.git)
+- [Jsoncpp](https://github.com/open-source-parsers/jsoncpp.git)
+- [Flatbuffers](https://github.com/google/flatbuffers.git)
+- [Box2D](https://github.com/erincatto/box2d.git)
+- [JoltPhysics](https://github.com/jrouwe/JoltPhysics.git)
+- [Libgit2](https://github.com/libgit2/libgit2.git)
+- [Libcurl](https://github.com/curl/curl.git)
