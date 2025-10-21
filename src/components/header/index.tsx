@@ -27,7 +27,7 @@ export default function Header() {
         <header className="blog-header">
             <div className="title-wrapper">
                 <WindowLabels/>
-                <section className="terminal center"><a onClick={() => router.replace("/")} className="username"><span className="blog-owner">osmarques</span>$<span className="blog-path">~{filteredPathname === "" ? "" : "/"}{filteredPathname}</span></a></section>
+                <section className="terminal center"><a onClick={() => router.replace("/")} className="username"><span className="blog-owner">bmarques</span>$<span className="blog-path">~{filteredPathname === "" ? "" : "/"}{filteredPathname}</span></a></section>
             </div>
             {size.width > 1024 &&
             <nav className="nav-links">
