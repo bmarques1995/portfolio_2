@@ -1,6 +1,14 @@
 import { getMDXMetadata } from '@/app/api/shared/mdxReader';
 import { NextRequest } from 'next/server';
 import path from 'path';
+import { createCORSHeaders, handlePreflight } from '@/app/api/shared/origins';
+
+export interface PostContext {
+  params: {
+    context: string; // Or the type of your dynamic segment
+    locale: string; // Or the type of your dynamic segment
+  };
+}
 
 //export async function GET(req: Request, { params }: { params: { context: string, locale: string} })
 export async function GET(
@@ -15,5 +23,16 @@ export async function GET(
             slug: post.slug
         };
     });
-    return new Response(JSON.stringify(postsMetadata));
+    return new Response(JSON.stringify(postsMetadata),
+    {
+        status: 200, 
+        headers: {
+        'Content-Type': 'application/json',
+        ...createCORSHeaders(req),
+        }
+    });
+}
+
+export async function OPTIONS(req: NextRequest) {
+    return handlePreflight(req);
 }
