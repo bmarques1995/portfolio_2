@@ -28,7 +28,7 @@ export default function Home() {
         searchPost();
     },[languageFence, language, setPostContent]);
     return (
-        <WidgetWrapper maxSetWidth={720}>
+        <WidgetWrapper maxSetWidth={1080}>
             <div style={{padding: '8px', width: '100%'}}>
                 <Article markdown={postContent} title={postTitle}/>
             </div>

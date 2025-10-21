@@ -16,7 +16,6 @@ export function createCORSHeaders(req: NextRequest): HeadersInit {
         allowedOrigins.push(`https://www.${o}`);
     });
 
-    console.log('Allowed Origins:', allowedOrigins);
     const isAllowed = origin && allowedOrigins.includes(origin);
 
     return {
